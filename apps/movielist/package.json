@@ -17,6 +17,7 @@
     "nuxt": "3.0.0"
   },
   "dependencies": {
-    "daisyui": "^2.46.0"
+    "daisyui": "^2.46.0",
+    "db": "*"
   }
 }

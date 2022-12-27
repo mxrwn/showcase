@@ -1,5 +1,5 @@
 {
-  "name": "db",
+  "name": "types",
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
@@ -8,11 +8,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "prisma": "^4.8.0"
-  },
-  "dependencies": {
-    "@prisma/client": "^4.8.0"
-  }
+  "license": "ISC"
 }

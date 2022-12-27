@@ -15,21 +15,15 @@ model List {
   url String
   title     String
   published Boolean @default(true)
-  movies    MoviesInLists[]
+  movies    Movie[]
   created DateTime @default(now())
 }
 
 model Movie {
   id     Int    @id @default(autoincrement())
   title  String
-  image  String
-  lists MoviesInLists[]
+  image  String 
+  list List @relation(fields: [list_id], references: [id])
+  list_id Int 
 }
 
-model MoviesInLists {
-  list List @relation(fields: [listId], references: [id])
-  listId Int
-  movie Movie @relation(fields: [movieId], references: [id])
-  movieId Int
-  @@id([listId, movieId])
-}
