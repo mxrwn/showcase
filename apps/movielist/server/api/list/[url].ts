@@ -5,6 +5,9 @@ export default defineEventHandler(async (event) => {
     where: {
       url: event.context.params.url,
     },
+    include: {
+      movies: true,
+    },
   });
   return lists;
 });

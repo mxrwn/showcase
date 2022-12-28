@@ -2,6 +2,7 @@
 type List = {
   url: string;
   title: string;
+  id: number;
 };
 let lists: List[] = [];
 let localData;
@@ -19,7 +20,26 @@ async function creatingList() {
   if (process.client) {
     localStorage.setItem('lists', JSON.stringify(lists));
   }
+  window.location.reload();
 }
+
+const deleteList = async (list) => {
+  console.log(list);
+  await $fetch('/api/list', {
+    method: 'DELETE',
+    body: JSON.stringify({
+      id: list.id,
+    }),
+  });
+  lists.splice(
+    lists.findIndex((l) => l.id === list.id),
+    1
+  );
+  if (process.client) {
+    localStorage.setItem('lists', JSON.stringify(lists));
+  }
+  window.location.reload();
+};
 </script>
 
 <template>
@@ -31,7 +51,12 @@ async function creatingList() {
       </button>
     </div>
     <DashboardList>
-      <ListItem v-for="list in lists" :key="list.url" :list="list" />
+      <ListItem
+        v-for="list in lists"
+        :key="list.url"
+        :list="list"
+        :delete-list="deleteList"
+      />
       <!-- <ListItem />
       <ListItem /> -->
     </DashboardList>

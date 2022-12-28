@@ -11,5 +11,6 @@ export default defineEventHandler(async () => {
   return {
     url: list.url,
     title: list.title,
+    id: list.id,
   };
 });
